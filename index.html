@@ -148,11 +148,13 @@
       let url = `${baseURL}?api-key=${key}&page=${pageNumber}&q=${searchTerm.value}&fq=document_type:("article")`;
 
       if (startDate.value !== "") {
-        url = `${url}&begin_date=${startDate.value}`;
+        let startDateInstant = new Date(startDate.value).toISOString();
+        url = `${url}&begin_date=${startDateInstant}`;
       }
 
       if (endDate.value !== "") {
-        url = `${url}&end_date=${endDate.value}`;
+        let endDateInstant = new Date(endDate.value).toISOString();
+        url = `${url}&end_date=${endDateInstant}`;
       }
 
       fetch(url)
